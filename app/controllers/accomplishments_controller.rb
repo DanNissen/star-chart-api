@@ -3,7 +3,7 @@ class AccomplishmentsController < ProtectedController
 
   # GET /accomplishments
   def index
-    @accomplishments = current_user.accomplishments.all
+    @accomplishments = current_user.accomplishments.all.group_by(&:date_accomplished)
 
     render json: @accomplishments
   end
